@@ -36,7 +36,7 @@ Host map with tags
 
 Installation of a MySQL database on Ubuntu:
 ```
-sudo apt-get install mysql-server
+sudo apt install mysql-server
 ```
 
 The instructions the links below show how to 
@@ -114,17 +114,76 @@ To make calls to the API both an API key and an application Key are required. We
 3. run the script ```python create_timeboard.py```
 
 
-???
+**Set the Timeboard's timeframe to the past 5 minutes**:
+Use the Keyboard Shortcuts shown when clicking on the keyboard icon on the top-right corner of the timeboard : ```alt + [ / alt + ]: Zoom out/in time frame```
+
+
+**??? Todo**: Take a snapshot of this graph and use the @ notation to send it to yourself.
+
+**Answer to the Bonus Question**: The anomaly graph shows the same shape of line graph as without the anomaly with difference that the line is drawn in a different colour where metric values are outside of the enveloppe upper and lower bounds calculated by the algorithm (the 'basic' algorithm is used here) 
+
 
 
 ### 4. Monitoring Data
-Create a metric monitor on my_metric
+
+To create a metric monitor on my_metric we follow documentation on
 
 https://docs.datadoghq.com/monitors/monitor_types/metric/
 https://docs.datadoghq.com/monitors/notifications/
 
 
+Email notification from monitor
+![Notification Email](screenshots/NotificationEmail.PNG)
+
+
+To schedule downtimes for the monitor read this [documentation](https://docs.datadoghq.com/monitors/downtimes/)
+
+
+
+We need to create 3 weekly downtime entries
+- Weekly Saturday-Sunday Midnight to Midnight
+- Weekly Monday to Friday from 00:00 for 9 hours
+- Weekly Monday to Friday from 19:00 for 5 hours
+
+
+
+Select the *Monitors/Manage Downtime* menu
+![Manage Downtime menu](screenshots/SelectManageDowntime.png)
+
+Click the *Schedule Downtime* button
+![Schedule Downtime button](screenshots/ScheduleDowntimeButton.png)
+
+In the *Schedule Downtime* form
+- select the monitor: my_metric
+- select Recurring
+- every 1 week
+- Monday to Friday
+- Beginning 9:00, endP
 curl "https://api.datadoghq.com/api/v1/dash?api_key=ffab323179a991d3dcd567a7104a32b3&application_key=f4ac87aacccf4a2989e9b32addafce1021b75ce1"
 
 
+
+**Answer to the Bonus Question**: Difference between service and resource
+- A service is a set of processes that do the same job
+- A Resource is a particular action for a service. Ex: URL for web app, a query for a database
+
+
+sudo apt install python
+sudo apt install python-pip
+pip install flask
+pip install ddtrace
+ddtrace-run python flask_webapp.py
+
+
+![ddtrace-run python flask_webapp.py](screenshots/DdTraceRunFlaskWebApp.PNG)
+As shown in the python source code the web server is accessible through port 5050. If the server is running in a container such as Docker or Vagrant then port forwarding needs to be added to the container for it to be accessed from the host or another container.
+In this case Vagrant on Windows 10, we add this line in *VagrantFile*
+```config.vm.network "forwarded_port", guest: 5050, host: 5050, host_ip: "127.0.0.1"```
+
+Then in a browser on the host we enter these URLs
+- http://localhost:5050/
+- http://localhost:5050/api/apm
+- http://localhost:5050/api/trace
+
+The Flask web app instrumented by ddtrace-run sends traces for each URL used
 [Issues encountered](issues.md)

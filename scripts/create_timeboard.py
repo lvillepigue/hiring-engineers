@@ -19,7 +19,7 @@ graphs = [
 	"definition": { 
 		"requests": [
 		{
-			"q": "avg:my_metric{host:ubuntu-bionic}"
+			"q": "my_metric{host:ubuntu-bionic}"
 		}
 	]
 	}	
