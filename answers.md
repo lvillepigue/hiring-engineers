@@ -1,12 +1,13 @@
 Your answers to the questions go here.
 
-# What is DataDog?
+# Why DataDog?
 
-???
+??? TO COMPLETE ???
+
 
 ## DataDog's features
 
-???
+??? TO COMPLETE ???
 
 
 ## Installing DataDog for your environment
@@ -146,6 +147,10 @@ We need to create 3 weekly downtime entries
 - Weekly Monday to Friday from 19:00 for 5 hours
 
 
+Notifications will be suspended from 7m to 9am daily on M-F No notifications will be sent on weekends @laurentvillepigue@yahoo.com
+
+
+
 
 Select the *Monitors/Manage Downtime* menu
 ![Manage Downtime menu](screenshots/SelectManageDowntime.png)
@@ -162,16 +167,21 @@ In the *Schedule Downtime* form
 curl "https://api.datadoghq.com/api/v1/dash?api_key=ffab323179a991d3dcd567a7104a32b3&application_key=f4ac87aacccf4a2989e9b32addafce1021b75ce1"
 
 
+![Schedule Downtime Form](screenshots/ScheduleDowntimeForm.png)
+
 
 **Answer to the Bonus Question**: Difference between service and resource
 - A service is a set of processes that do the same job
 - A Resource is a particular action for a service. Ex: URL for web app, a query for a database
 
 
-sudo apt install python
-sudo apt install python-pip
-pip install flask
-pip install ddtrace
+```sudo apt install python```
+```sudo apt install python-pip```
+```pip install flask```
+```pip install ddtrace```
+
+There is no need to modify flask_webapp.py as the ddtrace-run command instruments it to send Flask data to the agent.
+
 ddtrace-run python flask_webapp.py
 
 
@@ -185,5 +195,32 @@ Then in a browser on the host we enter these URLs
 - http://localhost:5050/api/apm
 - http://localhost:5050/api/trace
 
+![Flask /](screenshots/FlaskRoot.PNG)
+![Flask /api/apm](screenshots/FlaskApiApm.PNG)
+![Flask /api/trace](screenshots/FlaskApiTrace.PNG)
+
 The Flask web app instrumented by ddtrace-run sends traces for each URL used
+
+Link and a screenshot of a Dashboard with both APM and Infrastructure Metrics:
+We can have already a dashboard with plenty of infrastructure metrics by selecting menu Infrastructure/Infrastructure List and clicking on the  *ubuntu-bionic* link
+
+![Access Infra Dashboard](screenshots/AccessInfraDashboard.png)
+
+![Clone Infra Dashboard](screenshots/CloneInfraDashboard.png)
+
+1. Drag the *Timeseries* icon to the chart placeholder in the Dashboard
+2. Choose the *trace.flask.requests.hits* metric
+3. Click *Save*
+![Add Flask APM metric](screenshots/AddApmToInfraDashboard.png)
+
+The new timeseries chart for the metric is shown below in the red rectangle
+![Flask APM metric added](screenshots/AddApmToInfraDashboardDone.png)
+
+**Final Question:**
+DataDog can be used for these purposes other than monitoring computer systems or applications: 
+- Medical monitor a group of patients that are at home but not in a hospital. Hospitals may require eliminating dependencies on Internet connections that can fail. However for patients outside of the hospital the data collection already depends on an Internet connection.
+- Car fleet monitor. Average of the status of each car: engine, brakes, etc, exceeding speed limits. The average status of each car can indicate where to spend budgets to maintain cars and car usage such as speed limit excesses can help defining premiums for insurance.
+- Telemetry from any sensors
+
+
 [Issues encountered](issues.md)
