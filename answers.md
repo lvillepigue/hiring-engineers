@@ -1,14 +1,5 @@
 Your answers to the questions go here.
 
-# Why DataDog?
-
-??? TO COMPLETE ???
-
-
-## DataDog's features
-
-??? TO COMPLETE ???
-
 
 ## Installing DataDog for your environment
 Let's say you are running a MySQL server on an Ubuntu server you would like to monitor
@@ -119,7 +110,14 @@ To make calls to the API both an API key and an application Key are required. We
 Use the Keyboard Shortcuts shown when clicking on the keyboard icon on the top-right corner of the timeboard : ```alt + [ / alt + ]: Zoom out/in time frame```
 
 
-**??? Todo**: Take a snapshot of this graph and use the @ notation to send it to yourself.
+**Take a snapshot of this graph and use the @ notation to send it to yourself**
+1. Click on the snapshot button on the graph (sorry the graph is empty because my trial expired)
+![Click on snapshot button](screenshots/SnapshotButton.PNG)
+2. Write an optional message and the email address to which to send the snapshot prefixed by '@'
+![Click on snapshot button](screenshots/SnapshotDialog.PNG)
+3. Below is the email with the snapshot
+![Click on snapshot button](screenshots/SnapshotEmail.PNG)
+
 
 **Answer to the Bonus Question**: The anomaly graph shows the same shape of line graph as without the anomaly with difference that the line is drawn in a different colour where metric values are outside of the enveloppe upper and lower bounds calculated by the algorithm (the 'basic' algorithm is used here) 
 
@@ -174,15 +172,17 @@ curl "https://api.datadoghq.com/api/v1/dash?api_key=ffab323179a991d3dcd567a7104a
 - A service is a set of processes that do the same job
 - A Resource is a particular action for a service. Ex: URL for web app, a query for a database
 
+### 5. Collecting APM Data
+First we install python, pip the python package manager, the Flask webserver then ddtrace from DataDog with the following commands respectively
 
-```sudo apt install python```
-```sudo apt install python-pip```
-```pip install flask```
-```pip install ddtrace```
+- ```sudo apt install python```
+- ```sudo apt install python-pip```
+- ```pip install flask```
+- ```pip install ddtrace```
 
-There is no need to modify flask_webapp.py as the ddtrace-run command instruments it to send Flask data to the agent.
+There is no need to modify flask_webapp.py as the ddtrace-run command instruments it to send Flask data to the agent. We run the command that instruments our Flask app to report stats to DataDog.
 
-ddtrace-run python flask_webapp.py
+```ddtrace-run python flask_webapp.py```
 
 
 ![ddtrace-run python flask_webapp.py](screenshots/DdTraceRunFlaskWebApp.PNG)
@@ -216,11 +216,12 @@ We can have already a dashboard with plenty of infrastructure metrics by selecti
 The new timeseries chart for the metric is shown below in the red rectangle
 ![Flask APM metric added](screenshots/AddApmToInfraDashboardDone.png)
 
-**Final Question:**
+### 6. Final Question
 DataDog can be used for these purposes other than monitoring computer systems or applications: 
 - Medical monitor a group of patients that are at home but not in a hospital. Hospitals may require eliminating dependencies on Internet connections that can fail. However for patients outside of the hospital the data collection already depends on an Internet connection.
 - Car fleet monitor. Average of the status of each car: engine, brakes, etc, exceeding speed limits. The average status of each car can indicate where to spend budgets to maintain cars and car usage such as speed limit excesses can help defining premiums for insurance.
 - Telemetry from any sensors
 
 
+### 7. Issues encountered
 [Issues encountered](issues.md)
