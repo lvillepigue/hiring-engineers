@@ -112,11 +112,11 @@ Use the Keyboard Shortcuts shown when clicking on the keyboard icon on the top-r
 
 **Take a snapshot of this graph and use the @ notation to send it to yourself**
 1. Click on the snapshot button on the graph
-![Click on snapshot button](screenshots/SnapshotButton.PNG)
+![Click on snapshot button](screenshots/SnapshotButton.png)
 2. Write an optional message and the email address to which to send the snapshot prefixed by '@'
-![Click on snapshot button](screenshots/SnapshotDialog.PNG)
+![Click on snapshot button](screenshots/SnapshotDialog.png)
 3. Below is the email with the snapshot
-![Click on snapshot button](screenshots/SnapshotEmail.PNG)
+![Click on snapshot button](screenshots/SnapshotEmail.png)
 
 
 **Answer to the Bonus Question**: The anomaly graph shows the same shape of line graph as without the anomaly with difference that the line is drawn in a different colour where metric values are outside of the enveloppe upper and lower bounds calculated by the algorithm (the 'basic' algorithm is used here) 
