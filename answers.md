@@ -111,7 +111,7 @@ Use the Keyboard Shortcuts shown when clicking on the keyboard icon on the top-r
 
 
 **Take a snapshot of this graph and use the @ notation to send it to yourself**
-1. Click on the snapshot button on the graph (sorry the graph is empty because my trial expired)
+1. Click on the snapshot button on the graph
 ![Click on snapshot button](screenshots/SnapshotButton.PNG)
 2. Write an optional message and the email address to which to send the snapshot prefixed by '@'
 ![Click on snapshot button](screenshots/SnapshotDialog.PNG)
